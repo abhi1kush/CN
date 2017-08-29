@@ -1,0 +1,28 @@
+#!/bin/bash
+path1="$1"
+path2="$2"
+path3="$3"
+path4="$4"
+path5="$5"
+
+chmod +x ques_3.py
+cat thrpt.txt <<-EOF
+
+EOF
+./ques_3.py $path1 >>thrpt.txt
+cat thrpt.txt <<-EOF
+"\n"
+EOF
+./ques_3.py $path2 >>thrpt.txt
+cat thrpt.txt <<-EOF
+"\n"
+EOF
+./ques_3.py $path3 >>thrpt.txt
+cat thrpt.txt <<-EOF
+"\n"
+EOF
+./ques_3.py $path4 >>thrpt.txt
+cat thrpt.txt <<-EOF
+"\n"
+EOF
+./ques_3.py $path5 >>thrpt.txt

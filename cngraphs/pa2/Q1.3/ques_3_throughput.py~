@@ -1,0 +1,107 @@
+#!/usr/bin/env python 
+
+import re
+
+"""Function to extract how many bytes transfered"""
+def payload_of_line(line):
+	
+	print payload
+	return int(payload)
+
+def add_bytes(bytes,lines):
+	for line in lines :
+		# Adding Payload data in lines
+		bytes = bytes + int(line.split()[1]) 
+	return bytes
+
+def time_diff(lines):
+	no_of_lines=0
+	for l in lines_1ms:
+		if no_of_lines==0:
+			first_time=l.split()[0]
+		no_of_lines= no_of_lines + 1
+	i =0
+	for l in lines_1ms:
+		if i<=no_of_lines:
+			if i==no_of_lines-1:
+				last_time=l.split()[0]
+		i=i+1
+	t = float(last_time) - float(first_time)
+	return t
+
+
+"""For extracting Throughput """
+# opening files
+with open("1ms/tcp_throughput.txt","r") as inputfile_1ms :
+	with open("5ms/tcp_throughput.txt","r") as inputfile_5ms :
+		with open("10ms/tcp_throughput.txt","r") as inputfile_10ms :
+			with open("50ms/tcp_throughput.txt","r") as inputfile_50ms :
+				with open("100ms/tcp_throughput.txt","r") as inputfile_100ms :
+					with open("ques_3_tcp_throughput.txt","w") as outputfile :
+						bytes=0
+						""" Reading FILE with 1 ms delay """
+						lines_1ms = inputfile_1ms.readlines()
+						bytes = bytes + add_bytes(bytes,lines_1ms)
+						
+						#Extracting time values
+						total_time=time_diff(lines_1ms)
+						#calculating throughput 
+						throughput=float(bytes)/total_time
+						outputfile.write(str(1) + " " +str(throughput) +"\n")
+						
+						""" Reading FILE with 5 ms delay """
+						lines_5ms= inputfile_5ms.readlines()						
+						lines_5ms = inputfile_5ms.readlines()
+						bytes = bytes + add_bytes(bytes,lines_5ms)
+						#Extracting time values
+						total_time=time_diff(lines_5ms)
+						#calculating throughput 
+						throughput=float(bytes)/total_time
+						outputfile.write(str(1) +  " " +str(throughput)+"\n")
+						
+						""" Reading FILE with 10 ms delay """
+						lines_10ms= inputfile_10ms.readlines()						
+						lines_10ms = inputfile_10ms.readlines()
+						bytes = bytes + add_bytes(bytes,lines_10ms)
+						
+						#Extracting time values
+						
+						total_time=time_diff(lines_10ms)
+						#calculating throughput 
+						throughput=float(bytes)/total_time
+						outputfile.write(str(1) + " " + str(throughput)+"\n")
+						
+						""" Reading FILE with 50 ms delay """
+						lines_50ms= inputfile_50ms.readlines()						
+						lines_50ms = inputfile_50ms.readlines()
+						bytes = bytes + add_bytes(bytes,lines_50ms)
+					
+						#Extracting time values
+						total_time=time_diff(lines_50ms)
+						#calculating throughput 
+						throughput=float(bytes)/total_time
+						outputfile.write(str(1) + " " + str(throughput)+"\n")
+					
+						
+						""" Reading FILE with 100 ms delay """
+						lines_100ms= inputfile_100ms.readlines()						
+						lines_100ms = inputfile_100ms.readlines()
+						bytes = bytes + add_bytes(bytes,lines_100ms)
+						
+						#Extracting time values
+						total_time=time_diff(lines_100ms)
+						#calculating throughput 
+						throughput=float(bytes)/total_time
+						outputfile.write(str(1) + " " + str(throughput)+"\n")
+											
+												
+						
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,188 @@
+\documentclass[a4paper,10pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{multicol}
+
+\setlength{\topmargin}{-0.3in}
+
+\setlength{\textheight}{8.5in}
+\setlength{\headsep}{0.2in}
+\setlength{\oddsidemargin}{-0.2in}
+\setlength{\evensidemargin}{-0.2in}
+\setlength{\textwidth}{6.5in}
+\setlength{\parindent}{1cm}
+
+
+%title
+\title{{\bf Programming Asignment 2 } }
+\author{143050077 Abhishek Pratap Singh }
+
+\begin{document}
+
+\maketitle
+
+\section{Part 1}
+\label{p1}
+
+
+\subsection{Exercise 1.1}
+\includegraphics[scale = 0.4]{Q1.1/tcp_throughput}  
+\includegraphics[scale = 0.4]{Q1.1/congestion_window}
+\includegraphics[scale = 0.25]{Q1.1/time_SEQ}
+\includegraphics[scale = 0.25]{Q1.1/queue_occupancy}
+\includegraphics[scale = 0.25]{Q1.1/queueing_delay}
+
+Avg Throughput is 4.45 Mbps which is close to 5 Mbps but in last seconds graph goes down which indicate momentarily 
+fall in throughput.
+
+TCP algorithm reduces cwnd 25 times .
+Because it this version TCP NewReno which uses 
+AIMD algorithms to mainatain congestion window 
+so when it crosses ssthershold value it become half of previous size .  
+
+\subsection{Exercise 1.2}
+
+\includegraphics[scale = 0.4]{Q1.2/time_SEQ.png} 
+\includegraphics[scale = 0.4]{Q1.2/tcp_throughput.png}  
+\includegraphics[scale = 0.25]{Q1.2/congestion_window.png}
+\includegraphics[scale = 0.25]{Q1.2/queue_occupancy.png}
+\includegraphics[scale = 0.25]{Q1.2/queueing_delay.png}
+
+In this case we increased Link rate to 50 Mbps so BDP increased,
+TCP will try to estimate ideal window size by increasing window size with slow start .
+that will create congestion and then cwnd will decrease multiplicatively .
+due this decreased cwnd size throughput will decrease .
+
+* Main Reason for low throughput is mismatch between queue size and  Window size and BDP.
+window allows large no. of packets, which are too much for 10 size queue leads to discard packets and congestion
+and then retransmission of these packets.
+\pagebreak
+\newpage
+\subsection{Exercise 1.3}
+\includegraphics[scale = 0.4]{Q1.3/avg_throughput_q3.png}
+
+{\bf Graphs with 50ms 100ms delays}
+
+\includegraphics[scale = 0.25]{Q1.3/50ms/time_SEQ.png}
+\includegraphics[scale = 0.25]{Q1.3/100ms/time_SEQ.png}
+
+\includegraphics[scale = 0.25]{Q1.3/50ms/congestion_window.png}
+\includegraphics[scale = 0.25]{Q1.3/100ms/congestion_window.png}
+
+In this case delay is increased so BDP increased and but link rate is same .
+window size will increase with slow start until link is congested and queue is overflowed .
+According to CWND graphs
+After congestion reciever buffer is too overflowed then he sends advertised window to limit increase of congestion 
+window after that Congestion Avoidance starts .
+Main cause of low throughput is large increase in window size with short queue size .
+\pagebreak
+\newpage
+\subsection{Exercise 1.4}
+\includegraphics[scale = 0.4]{Q1.4/avg_throughput_q4.png}
+
+\includegraphics[scale = 0.25]{Q1.4/rate10^-3/time_SEQ.png}
+\includegraphics[scale = 0.25]{Q1.4/rate10^-4/time_SEQ.png}
+\includegraphics[scale = 0.25]{Q1.4/rate10^-5/time_SEQ.png}
+\includegraphics[scale = 0.25]{Q1.4/rate10^-6/time_SEQ.png}
+\includegraphics[scale = 0.25]{Q1.4/rate10^-7/time_SEQ.png}
+\includegraphics[scale = 0.25]{Q1.4/rate10^-8/time_SEQ.png}
+
+$Time Sequence Graphs with link rate 10^{-3},10^{-4},10^{-5},10^{-6},10^{-7},10^{-8} respectively$ 
+
+In this case Due to high loss rate Packetes went missing so it leads to Retransmission 
+So there is lot of retransmited packetes and lack of fresh new packets Th
+
+\pagebreak
+\newpage
+\subsection{Exercise 1.5}
+\begin{enumerate}
+\item{Queue Size 1}
+\begin{itemize}
+\item{Average Throughput = .18 Mbps}
+\item{Average Queueing Delay = 0.000417 sec}
+\item{Average CWND Size = 1347.68}
+\item{Average Queue Occupancy = 0.5 }
+\end{itemize}
+
+\item{Queue Size 2}
+\begin{itemize}
+\item{Average Throughput = 3.45 Mbps}
+\item{Average Queueing Delay = 0.000630 sec}
+\item{Average CWND Size = 6139.80}
+\item{Average Queue Occupancy = 0.8588}
+\end{itemize}
+
+\item{Queue Size 5}
+\begin{itemize}
+\item{Average Throughput = 4.04 Mbps}
+\item{Average Queueing Delay = 0.001455 sec}
+\item{Average CWND Size = 7671.27}
+\item{Average Queue Occupancy = 1.92999}
+\end{itemize}
+
+\item{Queue Size 10}
+\begin{itemize}
+\item{Average Throughput = 4.447 Mbps}
+\item{Average Queueing Delay = 0.003926 sec }
+\item{Average CWND Size = 9882.612 }
+\item{Average Queue Occupancy = 4.6922}
+\end{itemize}
+
+\item{Queue Size 100}
+\begin{itemize}
+\item{Average Throughput = 4.547 Mbps}
+\item{Average Queueing Delay = 0.035567 sec}
+\item{Average CWND Size = 29370.49}
+\item{Average Queue Occupancy = 38.889}
+\end{itemize}
+
+\item{Queue Size 500}
+\begin{itemize}
+\item{Average Throughput = 4.588 Mbps}
+\item{Average Queueing Delay = 0.053796 sec}
+\item{Average CWND Size = 39336.18}
+\item{Average Queue Occupancy = 58.49}
+\end{itemize}
+
+\item{Queue Size 1000}
+\begin{itemize}
+\item{Average Throughput = 4.588 Mbps}
+\item{Average Queueing Delay = 0.053796 sec }
+\item{Average CWND Size = 39336.18}
+\item{Average Queue Occupancy = 58.493}
+\end{itemize}
+\end{enumerate}
+
+Avg throughput icreasing with queue size significantly upto 1000
+after that there is negiligble improvement and queueing delay still increase
+
+So ideal queue size for this simulation is 100
+\pagebreak
+\newpage
+\begin{twocolumn}
+\subsection{Exercise 1.6}
+{\bf NewReno :}
+\includegraphics[scale = 0.35]{Q1.6/newreno/congestion_window.png} 
+
+{\bf Reno :}
+\includegraphics[scale = 0.35]{Q1.6/reno/congestion_window.png}  
+
+{\bf Tahoe :}
+\includegraphics[scale = 0.35]{Q1.6/tahoe/congestion_window.png}
+
+Tahoe Throughput = 3.966 Mbps
+Reno Throughput = 4.253 Mbps
+NewReno Throughput = 4.472 Mbps
+
+
+\end{twocolumn}
+
+\pagebreak
+\newpage
+\section{Part 2}
+\label{p2}
+\subsection{Exercise 2.2}
+\includegraphics[scale = 0.35]{~/Documents/throughput}
+
+
+\end{document}

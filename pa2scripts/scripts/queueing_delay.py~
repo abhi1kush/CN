@@ -1,0 +1,60 @@
+#!/usr/bin/env python 
+""" Script for queueing delay information extraction """
+import re
+import string
+
+"""Function to extract time of line"""
+def time_extract(line):
+	time_text = line.split("/")[0]
+	time = time_text.split()[1]
+	return time
+
+"""Function to extract packet id in line"""
+def packet_id(line):
+	half_line = line.split(" " + "id" + " ")[1]
+	pckt_id = half_line.split()[0]
+	return pckt_id
+	
+pckt_id_time_string = ""
+
+"""For extracting No of packets in Queue  """
+# opening files
+with open("tcp-example.tr","r") as inputfile :
+	with open("queueing_delay.txt","w") as outputfile :
+		# Reading line by line
+		lines = inputfile.readlines()
+		i=0
+		for line in lines:
+			if "NodeList/0" in line :
+				w = line.split()[0] 
+				# Checking for enqueue of packet and save packet id .
+				if w == "+" :
+					enqueue_time = time_extract(line)
+					pckt_id = packet_id(line)	
+					pckt_id_time_string = pckt_id_time_string + "(" + pckt_id+ ":" + enqueue_time + ")"
+				# Checking for dequeue of same packet			
+				elif w == "-":
+					pckt_id = packet_id(line)
+					if pckt_id in pckt_id_time_string :
+							half_line = pckt_id_time_string.split(pckt_id + ":")[1]
+							enqueue_time_d = float(half_line.split(")")[0])
+							dequeue_time = float(time_extract(line))
+							queueing_delay = dequeue_time - enqueue_time_d
+							outputfile.write(str(dequeue_time) + " " + str(queueing_delay) + "\n")
+							
+					
+ 
+			
+
+
+
+
+
+
+
+
+
+
+
+
+

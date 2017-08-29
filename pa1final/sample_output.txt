@@ -1,0 +1,566 @@
+
+############# #  SERVER1  # ###########
+
+** test case for single clients **
+
+abhi@ubuntu:~/cn$ ./server1 5000
+connected with client socket 4: 
+Client socket 4 sent msg: hi
+Replied to client 4 
+Client socket 4 sent msg: heloo
+Replied to client 4 
+Client socket 4 sent msg: hello again
+Replied to client 4 
+Client socket 4 sent msg: byye
+Replied to client 4 
+Client socket 4 said bye
+; finishing 
+Replied to client 4 
+abhi@ubuntu:~/cn$ 
+
+corresponding client:
+
+abhi@ubuntu:~/cn$ ./client 127.0.0.1 5000
+Connected to server
+Please enter the message to the server: hi
+Server replied: OK Abhishek Singh
+Please enter the message to the server: heloo 
+Server replied: OK Abhishek Singh
+Please enter the message to the server: hello again
+Server replied: OK Abhishek Singh
+Please enter the message to the server: byye                
+Server replied: OK Abhishek Singh
+Please enter the message to the server: bye
+Server replied: Goodbye Abhiskek singh
+abhi@ubuntu:~/cn$ 
+
+** test case for multiple clients **
+
+second client at same time trying to connect:
+
+abhi@ubuntu:~/cn$ ./client 127.0.0.1 5000
+ERROR connecting
+abhi@ubuntu:~/cn$
+
+** Test case for Ctrl+c **
+
+abhi@ubuntu:~/cn$ ./server1 5000
+connected with client socket 4: 
+Client socket 4 sent msg: hi
+Replied to client 4 
+Client socket 4 sent msg: i am going to press ctrl + c
+Replied to client 4 
+Client socket 4 sent msg: Replied to client 4 
+abhi@ubuntu:~/cn$ 
+
+
+abhi@ubuntu:~/cn$ ./client 127.0.0.1 5000
+Connected to server
+Please enter the message to the server: hi
+Server replied: OK Abhishek Singh
+Please enter the message to the server: i am going to press ctrl + c       
+Server replied: OK Abhishek Singh
+Please enter the message to the server: ^C
+abhi@ubuntu:~/cn$ 
+
+
+
+########### # SERVER 2 # #############
+
+** Test case for multiple clients **
+
+abhi@ubuntu:~/cn$ ./server2 5000
+connected with client no 4: 
+
+Client socket 4 sent msg: hi1
+Replied to client 4:
+connected with client no 4: 
+
+Client socket 4 sent msg: hi2
+Replied to client 4:
+
+Client socket 4 sent msg: hello1
+Replied to client 4:
+connected with client no 4: 
+
+Client socket 4 sent msg: hi3
+Replied to client 4:
+
+Client socket 4 sent msg: hi again1
+Replied to client 4:
+connected with client no 4: 
+
+Client socket 4 sent msg: hi4
+Replied to client 4:
+
+Client socket 4 sent msg: ok3
+Replied to client 4:
+
+Client socket 4 sent msg: hello4
+Replied to client 4:
+
+Client socket 4 sent msg: ok2
+Replied to client 4:
+
+ Client socket 4 said bye
+: finishing
+ Replied to client 4:
+
+Client socket 4 sent msg: hi again2
+Replied to client 4:
+
+Client socket 4 sent msg: hello2
+Replied to client 4:
+
+ Client socket 4 said bye
+: finishing
+ Replied to client 4:
+
+Client socket 4 sent msg: hey2
+Replied to client 4:
+
+Client socket 4 sent msg: hey1
+Replied to client 4:
+
+ Client socket 4 said bye
+: finishing
+ Replied to client 4:
+
+ Client socket 4 said bye
+: finishing
+ Replied to client 4:
+
+
+
+client 3 
+abhi@ubuntu:~/cn$ ./client 127.0.0.1 5000
+Connected to server
+Please enter the message to the server: hi3
+Server replied: OK Abhishek Singh
+Please enter the message to the server: ok3
+Server replied: OK Abhishek Singh
+Please enter the message to the server: bye
+Server replied: Goodbye Abhiskek singh
+abhi@ubuntu:~/cn$ 
+
+client 4
+abhi@ubuntu:~/cn$ ./client 127.0.0.1 5000
+Connected to server
+Please enter the message to the server: hi4
+Server replied: OK Abhishek Singh
+Please enter the message to the server: hello4
+Server replied: OK Abhishek Singh
+Please enter the message to the server: bye
+Server replied: Goodbye Abhiskek singh
+abhi@ubuntu:~/cn$ 
+
+client 1
+abhi@ubuntu:~/cn$ ./client 127.0.0.1 5000
+Connected to server
+Please enter the message to the server: hi1
+Server replied: OK Abhishek Singh
+Please enter the message to the server: hello1
+Server replied: OK Abhishek Singh
+Please enter the message to the server: hi again1
+Server replied: OK Abhishek Singh
+Please enter the message to the server: hey1
+Server replied: OK Abhishek Singh
+Please enter the message to the server: bye
+Server replied: Goodbye Abhiskek singh
+abhi@ubuntu:~/cn$
+
+client 2
+abhi@ubuntu:~/cn$ ./client 127.0.0.1 5000
+Connected to server
+Please enter the message to the server: hi2
+Server replied: OK Abhishek Singh
+Please enter the message to the server: ok2
+Server replied: OK Abhishek Singh
+Please enter the message to the server: hi again2
+Server replied: OK Abhishek Singh
+Please enter the message to the server: hello2
+Server replied: OK Abhishek Singh
+Please enter the message to the server: hey2
+Server replied: OK Abhishek Singh
+Please enter the message to the server: bye
+Server replied: Goodbye Abhiskek singh
+abhi@ubuntu:~/cn$ 
+
+** Test case for Ctrl+c **
+
+abhi@ubuntu:~/cn$ ./server2 5000
+connected with client no 4: 
+
+Client socket 4 sent msg: hi
+Replied to client 4:
+
+Client socket 4 sent msg: i am going to press ctrl + c
+Replied to client 4:
+
+Client socket 4 sent msg: Replied to client 4:
+
+connected with client no 4: 
+
+Client socket 4 sent msg: hi
+Replied to client 4:
+
+
+
+abhi@ubuntu:~/cn$ ./client 127.0.0.1 5000
+Connected to server
+Please enter the message to the server: hi
+Server replied: OK Abhishek Singh
+Please enter the message to the server: i am going to press ctrl + c
+Server replied: OK Abhishek Singh
+Please enter the message to the server: ^C
+abhi@ubuntu:~/cn$ ./client 127.0.0.1 5000
+Connected to server
+Please enter the message to the server: hi
+Server replied: OK Abhishek Singh
+Please enter the message to the server: 
+
+
+
+
+
+
+############### # SERVER 3 # ##############
+
+** Test case for multiple clients **
+ 
+abhi@ubuntu:~/cn$ gcc server3.c -o server3 -w -lpthread
+abhi@ubuntu:~/cn$ ./server3 5000
+connected with client no 4: 
+
+Client socket 4sent msg: hi1
+Replied to client 4:
+connected with client no 5: 
+
+Client socket 5sent msg: hi2
+Replied to client 5:
+connected with client no 6: 
+
+Client socket 6sent msg: hi3
+Replied to client 6:
+
+Client socket 4sent msg: hello1
+Replied to client 4:
+connected with client no 7: 
+
+Client socket 7sent msg: hi4
+Replied to client 7:
+
+Client socket 5sent msg: i have to go
+Replied to client 5:
+
+ Client socket 5 said bye
+: finishing
+ Replied to client 5:
+
+Client socket 4sent msg: hi again1
+Replied to client 4:
+
+Client socket 7sent msg: hello4
+Replied to client 7:
+
+Client socket 7sent msg: hey4
+Replied to client 7:
+
+Client socket 4sent msg: ok1
+Replied to client 4:
+
+Client socket 6sent msg: hello3
+Replied to client 6:
+
+ Client socket 4 said bye
+: finishing
+ Replied to client 4:
+
+Client socket 7sent msg: ok4
+Replied to client 7:
+
+Client socket 6sent msg: hey3
+Replied to client 6:
+
+ Client socket 7 said bye
+: finishing
+ Replied to client 7:
+
+ Client socket 6 said bye
+: finishing
+ Replied to client 6:
+connected with client no 8: 
+
+Client socket 8sent msg: hi5
+Replied to client 8:
+
+ Client socket 8 said bye
+: finishing
+ Replied to client 8:
+
+
+client 2
+abhi@ubuntu:~/cn$ ./client 127.0.0.1 5000
+Connected to server
+Please enter the message to the server: hi2
+Server replied: OK Abhishek Singh
+Please enter the message to the server: i have to go
+Server replied: OK Abhishek Singh
+Please enter the message to the server: bye
+Server replied: Goodbye Abhiskek singh
+abhi@ubuntu:~/cn$ 
+
+client 1
+abhi@ubuntu:~/cn$ ./client 127.0.0.1 5000
+Connected to server
+Please enter the message to the server: hi1
+Server replied: OK Abhishek Singh
+Please enter the message to the server: hello1
+Server replied: OK Abhishek Singh
+Please enter the message to the server: hi again1
+Server replied: OK Abhishek Singh
+Please enter the message to the server: ok1
+Server replied: OK Abhishek Singh
+Please enter the message to the server: bye
+Server replied: Goodbye Abhiskek singh
+abhi@ubuntu:~/cn$ 
+
+client 4
+abhi@ubuntu:~/cn$ ./client 127.0.0.1 5000
+Connected to server
+Please enter the message to the server: hi4
+Server replied: OK Abhishek Singh
+Please enter the message to the server: hello4
+Server replied: OK Abhishek Singh
+Please enter the message to the server: hey4
+Server replied: OK Abhishek Singh
+Please enter the message to the server: ok4
+Server replied: OK Abhishek Singh
+Please enter the message to the server: bye
+Server replied: Goodbye Abhiskek singh
+abhi@ubuntu:~/cn$ 
+
+client 3
+abhi@ubuntu:~/cn$ ./client 127.0.0.1 5000
+Connected to server
+Please enter the message to the server: hi3
+Server replied: OK Abhishek Singh
+Please enter the message to the server: hello3
+Server replied: OK Abhishek Singh
+Please enter the message to the server: hey3
+Server replied: OK Abhishek Singh
+Please enter the message to the server: bye
+Server replied: Goodbye Abhiskek singh
+abhi@ubuntu:~/cn$ 
+
+client 5
+abhi@ubuntu:~/cn$ ./client 127.0.0.1 5000
+Connected to server
+Please enter the message to the server: hi5
+Server replied: OK Abhishek Singh
+Please enter the message to the server: bye
+Server replied: Goodbye Abhiskek singh
+abhi@ubuntu:~/cn$ 
+
+** Test case for Ctrl + c **
+
+
+ abhi@ubuntu:~/cn$ ./server3 5001
+connected with client no 4: 
+
+Client socket 4sent msg: hi
+Replied to client 4:
+
+Client socket 4sent msg: i am going to press Ctrl + c
+Replied to client 4:
+ERROR reading to socket 4
+connected with client no 5: 
+
+Client socket 5sent msg: hi 
+Replied to client 5:
+
+ Client socket 5 said bye
+: finishing
+ Replied to client 5:
+
+
+
+abhi@ubuntu:~/cn$ ./client 127.0.0.1 5001
+Connected to server
+Please enter the message to the server: hi
+Server replied: OK Abhishek Singh
+Please enter the message to the server: i am going to press Ctrl + c
+Server replied: OK Abhishek Singh
+Please enter the message to the server: ^C
+abhi@ubuntu:~/cn$ ./client 127.0.0.1 5001
+Connected to server
+Please enter the message to the server: hi 
+Server replied: OK Abhishek Singh
+Please enter the message to the server: bye
+Server replied: Goodbye Abhiskek singh
+abhi@ubuntu:~/cn$ 
+
+
+############ # SERVER 4 # ##############
+
+** Test case for multiple clients AND Ctrl + c **
+
+abhi@ubuntu:~/cn$ ./server4 5000
+strating select loop  fdmax :3
+In select loop: socket 3 is ready to read
+connected with client socket 4: 
+In select loop: socket 4 is ready to read
+
+Client  socket 4 sent msg: hi1
+Replied to client 4:
+In select loop: socket 3 is ready to read
+connected with client socket 5: 
+In select loop: socket 5 is ready to read
+
+Client  socket 5 sent msg: hi2
+Replied to client 5:
+In select loop: socket 3 is ready to read
+connected with client socket 6: 
+In select loop: socket 6 is ready to read
+
+Client  socket 6 sent msg: hi3
+Replied to client 6:
+In select loop: socket 5 is ready to read
+
+Client  socket 5 sent msg: hello2
+Replied to client 5:
+In select loop: socket 3 is ready to read
+connected with client socket 7: 
+In select loop: socket 7 is ready to read
+
+Client  socket 7 sent msg: hi4
+Replied to client 7:
+In select loop: socket 5 is ready to read
+
+Client  socket 5 sent msg: i am going to say bye 2
+Replied to client 5:
+In select loop: socket 4 is ready to read
+
+Client  socket 4 sent msg: hello
+Replied to client 4:
+In select loop: socket 4 is ready to read
+
+Client  socket 4 sent msg: hello1
+Replied to client 4:
+In select loop: socket 7 is ready to read
+
+Client  socket 7 sent msg: i am going to press Ctrl + c
+Replied to client 7:
+In select loop: socket 7 is ready to read
+
+Client  socket 7 sent msg: i am going to press Ctrl + c 4
+Replied to client 7:
+In select loop: socket 6 is ready to read
+
+Client  socket 6 sent msg: hello3
+Replied to client 6:
+In select loop: socket 5 is ready to read
+
+ Client 5 said bye
+: finishing
+ Replied to client 5:
+In select loop: socket 6 is ready to read
+
+Client  socket 6 sent msg: hey3
+Replied to client 6:
+In select loop: socket 7 is ready to read
+ERROR reading to socket 7
+In select loop: socket 4 is ready to read
+
+Client  socket 4 sent msg: hi again1
+Replied to client 4:
+In select loop: socket 6 is ready to read
+
+Client  socket 6 sent msg: about say bye 2
+Replied to client 6:
+In select loop: socket 6 is ready to read
+
+Client  socket 6 sent msg: sorry i am 3 about to say bye
+Replied to client 6:
+In select loop: socket 6 is ready to read
+
+ Client 6 said bye
+: finishing
+ Replied to client 6:
+In select loop: socket 4 is ready to read
+
+Client  socket 4 sent msg: ok1
+Replied to client 4:
+In select loop: socket 4 is ready to read
+
+ Client 4 said bye
+: finishing
+ Replied to client 4:
+                                                                            
+
+
+client 2
+abhi@ubuntu:~/cn$ ./client 127.0.0.1 5000
+Connected to server
+Please enter the message to the server: hi2
+Server replied: OK Abhishek Singh
+Please enter the message to the server: hello2
+Server replied: OK Abhishek Singh
+Please enter the message to the server: i am going to say bye 2
+Server replied: OK Abhishek Singh
+Please enter the message to the server: bye
+Server replied: Goodbye Abhiskek singh
+abhi@ubuntu:~/cn$ 
+
+client 4
+abhi@ubuntu:~/cn$ ./client 127.0.0.1 5000
+Connected to server
+Please enter the message to the server: hi4
+Server replied: OK Abhishek Singh
+Please enter the message to the server: i am going to press Ctrl + c
+Server replied: OK Abhishek Singh
+Please enter the message to the server: i am going to press Ctrl + c 4
+Server replied: OK Abhishek Singh
+Please enter the message to the server: ^C
+abhi@ubuntu:~/cn$ 
+
+client 3
+abhi@ubuntu:~/cn$ ./client 127.0.0.1 5000
+Connected to server
+Please enter the message to the server: hi3
+Server replied: OK Abhishek Singh
+Please enter the message to the server: hello3
+Server replied: OK Abhishek Singh
+Please enter the message to the server: hey3
+Server replied: OK Abhishek Singh
+Please enter the message to the server: about say bye 2
+Server replied: OK Abhishek Singh
+Please enter the message to the server: sorry i am 3 about to say bye
+Server replied: OK Abhishek Singh
+Please enter the message to the server: bye
+Server replied: Goodbye Abhiskek singh
+abhi@ubuntu:~/cn$ 
+
+client 1
+abhi@ubuntu:~/cn$ ./client 127.0.0.1 5000
+Connected to server
+Please enter the message to the server: hi1
+Server replied: OK Abhishek Singh
+Please enter the message to the server: hello
+Server replied: OK Abhishek Singh
+Please enter the message to the server: hello1
+Server replied: OK Abhishek Singh
+Please enter the message to the server: hi again1
+Server replied: OK Abhishek Singh
+Please enter the message to the server: ok1
+Server replied: OK Abhishek Singh
+Please enter the message to the server: bye
+Server replied: Goodbye Abhiskek singh
+abhi@ubuntu:~/cn$ 
+
+
+
+
+
+
+

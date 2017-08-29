@@ -1,0 +1,7 @@
+#!/bin/bash +x
+  
+./pa2-part1.sh /home/abhi/cn/pa2/Q1.1
+./pa2-part1.sh /home/abhi/cn/pa2/Q1.2
+./pa2-part1.sh /home/abhi/cn/pa2/Q1.3
+./pa2-part1.sh /home/abhi/cn/pa2/Q1.1
+ 

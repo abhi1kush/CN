@@ -1,0 +1,25 @@
+\documentclass[a4paper,10pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{caption}
+\usepackage{graphicx}
+%\usepackage{title}
+
+% Title Page
+
+\title{Report on Advanced Computer Network Progragramming Assignment 2 : Analysis of TCP using ns3.20 simulator and scripts}
+\author{Abhishek Pratap Singh \breakline Roll No. 143050077 \breakline MTech1 CSE}
+
+
+\begin{document}
+
+\begin{abstract}
+\end{abstract}
+\section{Part 1 ns3 Simulation}
+\subsection{Exercise 1.1}
+\begin{figure}
+\includegraphics[scale=0.2]{Q1.1/time_SEQ.png}
+\caption[]{TCP time seqeunce graph of node0}  
+\end{figure}
+
+
+\end{document}          

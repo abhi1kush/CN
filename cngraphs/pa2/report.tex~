@@ -1,0 +1,248 @@
+\documentclass[a4paper,10pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+
+\setlength{\topmargin}{-0.3in}
+\setlength{\textheight}{8.5in}
+\setlength{\headsep}{0.2in}
+\setlength{\oddsidemargin}{-0.2in}
+\setlength{\evensidemargin}{-0.2in}
+\setlength{\textwidth}{6.5in}
+\setlength{\parindent}{1cm}
+
+% Title Page
+\title{Programming Assignment 2}
+\author{143050077 Abhishek Pratap Singh}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+
+\begin{document}
+\maketitle
+\section{Part 1}
+\subsection{Exercise 1.1}
+\includegraphics[scale = 0.4]{Q1.1/tcp_throughput.png}  
+\includegraphics[scale = 0.4]{Q1.1/congestion_window.png}
+\includegraphics[scale=0.25]{figure.png}
+\includegraphics[scale = 0.25]{Q1.1/queue_occupancy.png}
+\includegraphics[scale = 0.25]{Q1.1/queueing_delay.png}
+
+\begin{itemize}
+ \item Avg {Throughput is 4.45 Mbps which is close to 5 Mbps but in last seconds graph goes down which
+indicate momentarily fall in throughput.}
+
+\item{25 times CWND reduced size , This happend because TCP using AIMD algorithm in which when loss of 
+packets or congestion happen CWND reduce to half of previous size which is stored in ssthreshold . }
+
+\end{itemize}
+
+\pagebreak
+\newpage
+\subsection{Exercise 1.2}
+\includegraphics[scale = 0.4]{Q1.2/tcp_throughput.png}  
+\includegraphics[scale = 0.4]{Q1.2/congestion_window.png}
+\includegraphics[scale=0.25]{Q1.2/time_SEQ.png}
+\includegraphics[scale = 0.25]{Q1.2/queue_occupancy.png}
+\includegraphics[scale = 0.25]{Q1.2/queueing_delay.png}
+\begin{itemize}
+ \item Avg {Avg Throughput = 14.21 Mbps
+In this case Link rate increased so BDP increased accordingly , TCP try to estimate ideal
+window size by increasing window size with slow start Algorithm .
+So this Window will allow to go many packets in 1 RTT that will lead to congestion because
+there is very short QUEUE size 10 which will start to drop packets after overflow.}
+\item{Main reason for this low throghput is mismatch between Linkrate and Queue size if we increase Queue size
+then it will improve throghput.}
+
+\end{itemize}
+
+
+
+\pagebreak
+\newpage
+
+\subsection{Exercise 1.3}
+\includegraphics[scale = 0.37]{Q1.3/avg_throughput_q3.png}
+
+{\bf Graphs with 50ms 100ms delay.}
+
+\includegraphics[scale = 0.25]{Q1.3/50ms/congestion_window.png}
+\includegraphics[scale = 0.25]{Q1.3/50ms/time_SEQ.png}
+
+
+\includegraphics[scale = 0.25]{Q1.3/100ms/congestion_window.png}
+\includegraphics[scale = 0.25]{Q1.3/100ms/time_SEQ.png}
+\begin{itemize}
+ \item {Avg Throughput goes down with link delay.}
+\item{In this case link Delay increases which leads to increase in BDP so TCP will allow large size of 
+window , now this large window will allow many packets to go in RTT it will lead to Queue overflow and
+congestion in link that will lead to Reduction of CWND size }
+\item{According to avobe CWND graphs it is clear that first CWND size goes very high then it reduces drastically ,
+upto that time queue and receiver window has overflowed .
+after that receiver sends advertised window to prevent overflow so cwnd becoms constant for some time after that
+it again goes to slow start phase then due to again congestion finally Due to timeouts it goes to CONGESTION Avoidence phase}
+\item{Using Time Sequence graphs we can infer that in middle of transmission many packet lost and no new Sequence no. is used.}
+
+\end{itemize}
+  
+\pagebreak
+\newpage
+
+\subsection{Exercise 1.4}
+\includegraphics[scale = 0.4]{Q1.4/avg_throughput_q4.png}
+
+{\bf Time Sequence Graphs with loss rate of link $10^{-3} ,10^{-4} ,10^{-5} ,10^{-6} ,10^{-7} ,10^{-8}$ }
+
+\includegraphics[scale=0.25]{Q1.4/rate10^-3/time_SEQ.png}
+\includegraphics[scale=0.25]{Q1.4/rate10^-4/time_SEQ.png}
+\includegraphics[scale=0.25]{Q1.4/rate10^-5/time_SEQ.png}
+\includegraphics[scale=0.25]{Q1.4/rate10^-6/time_SEQ.png}
+\includegraphics[scale=0.25]{Q1.4/rate10^-7/time_SEQ.png}
+\includegraphics[scale=0.25]{Q1.4/rate10^-8/time_SEQ.png}
+
+\begin{itemize}
+ \item {In this case as Loss rate of link increases packet loss increases too,
+due to this packet losses CWND size reduced to half every time so it leads to very few 
+packets in link than its capacity to hold . Thats Why Throughput goes down drastically . }
+\item{ See Time Sequence graphs with high loss rate , in these it is clearly visible that packets are lost many 
+retransmission happend which leads to smaller cwnd size and low througput.}
+\end{itemize}
+\pagebreak
+\newpage
+
+\subsection{Q1.5}
+\begin{enumerate}
+ \item{Queue Size 1}
+ \begin{itemize}
+  \item Average Throughput = 0.18 Mbps
+  \item Average Queue Occupancy = 0.5
+  \item Average Queueing Delay = 0.0004179 sec
+  \item Average cwnd = 1347.68
+ \end{itemize}
+  \item{Queue Size 2}
+  \begin{itemize}
+  \item Average Throughput = 3.445 Mbps
+  \item Average Queue Occupancy =0.8588 
+  \item Average Queueing Delay = 0.0006307 sec
+  \item Average cwnd = 6139.80
+ \end{itemize}
+ \item{Queue Size 5}
+   \begin{itemize}
+  \item Average Throughput = 4.043 Mbps
+  \item Average Queue Occupancy =1.9299
+  \item Average Queueing Delay = 0.0014567 sec
+  \item Average cwnd = 7671.27
+ \end{itemize}
+  \item{Queue Size 10}
+  \begin{itemize}
+  \item Average Throughput = 4.4472 Mbps
+  \item Average Queue Occupancy = 4.6922
+  \item Average Queueing Delay = 0.0039260 sec
+  \item Average cwnd = 9882.61
+ \end{itemize}
+  \item{Queue Size 100}
+ \begin{itemize}
+  \item Average Throughput = 4.5478 Mbps
+  \item Average Queue Occupancy = 38.8894
+  \item Average Queueing Delay = 0.035567 sec
+  \item Average cwnd = 29370.49
+ \end{itemize}
+  \item{Queue Size 500}
+ \begin{itemize}
+  \item Average Throughput = 4.588846 Mbps
+  \item Average Queue Occupancy = 58.4932
+  \item Average Queueing Delay = 0.05379 sec
+  \item Average cwnd = 39336.18
+ \end{itemize}
+ \item{Queue Size 1000}
+ \begin{itemize}
+  \item Average Throughput = 4.588846 Mbps
+  \item Average Queue Occupancy = 58.4932
+  \item Average Queueing Delay = 0.05379 sec
+  \item Average cwnd = 39336
+ \end{itemize}
+\end{enumerate}
+{\bf With increase in queue size Avg Throughput increases significantly 
+upto Queue size 100 after that there is no significant improvement in
+Avg Througput but Queueing Delay increased from 0.035567sec to 0.05379sec 
+So IDEAL QUEUE SIZE FOR this SIMULATION is 100}
+\pagebreak
+\newpage
+\subsection{Q1.6}
+
+{\bf Tahoe :}
+
+\includegraphics[scale=0.25]{Q1.6/tahoe/congestion_window.png}
+\includegraphics[scale=0.25]{Q1.6/tahoe/tcp_throughput.png}
+{In Tahoe version of TCP when packet lost it waits for a timeout
+and so pipeling goes disturbed and leads to empty holes in pipeline.
+so it leads to low throughput.}
+ 
+{\bf Reno :}
+
+\includegraphics[scale=0.25]{Q1.6/reno/congestion_window.png}
+\includegraphics[scale=0.25]{Q1.6/reno/tcp_throughput.png}
+
+* According to throughput graphs Reno has better Througput.
+ because Reno implements Fast Recovery after 3 dup acks so it maintains
+ pipelinig .
+ 
+ {\bf Fast Recovery :}
+ In fast recovery for every dupacks window size icreases by 1 mss so until it recieve an fresh acks. 
+
+  \begin{itemize}
+  \item {Slow Start Phase : slow start phase for both variants looks same .} 
+  \item {Fast Recovery : In Reno Fastrecovery is implemented but in Tahoe no Fast Recovery.
+   You can observe this by seeing CWND graphs ,IN CWND graph for Reno spikes (peaks) before Reducing cwnd size to half. }
+  \item {Congestion Avoidance : In tahoe after reaching to ssthreshold 
+  it sets cwnd size to 1 MSS but in Reno it sets cwnd size to half. it clearly visible in CWND graphs}
+ \end{itemize}
+\pagebreak
+\newpage
+
+\section{Part 2}
+\subsection{Exercise 2.1}
+
+{\bf (i) Througput graph}
+
+\includegraphics[scale=0.25]{Q2.1/throughput}
+ 
+Avg Throughput = 2.033 Mbps,
+I have downloaded 30 MB zip file of songs.
+ 
+
+ {\bf (ii) Retransmission graph}
+
+\includegraphics[scale=0.25]{Q2.1/retransmissionrate}
+
+372 retransmission due to Dupacks .
+
+{\bf (iii) Avg RTT graph}
+
+\includegraphics[scale=0.25]{Q2.1/avgrtt.png}
+
+Max RTT = 40ms
+
+Min RTT = 10ms
+
+* RTT depends on many factors but Queueing delay is most significant
+because usually Propagation delay is less for links.
+
+* But for some long distance link propagation delay also plays a significant
+role to decide RTT.
+
+\pagebreak
+\newpage
+\subsection{Exercise 2.2}
+
+\includegraphics[scale=0.5]{abhishek_prev.png}
+\includegraphics[scale=0.5]{abhishek.png}
+
+
+In this graph after {\bf 115 -120} there is lot of transmissions took place but i am not seeing any fast recovery so 
+i can assume that sender is using Tahoe style version of TCP .
+In that period no New sequence no. sent. 
+
+After that period of time slow start again with half window because the slope looks similar to previous flow of sequence no.
+
+It is clearly visible that in 115 - 120 Absence of Fast Recovery in the transmission because if it were fast recovery there
+will be increase in sequence no instead of line to parallel to x axis if it were Fast recovery then it would with positive slope.
+Due to tahoe style i think there is no SACK based recovery.
+\end{document}          

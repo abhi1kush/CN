@@ -1,0 +1,41 @@
+#!/bin/bash
+cat > throughput_q4.txt <<-EOF
+start
+EOF
+cat rate10^-3/tcp_throughput.txt >> throughput_q4.txt
+cat >> throughput_q4.txt <<-EOF
+end
+start
+EOF
+cat rate10^-4/tcp_throughput.txt >> throughput_q4.txt
+
+cat >> throughput_q4.txt <<-EOF
+end
+start
+EOF
+cat rate10^-5/tcp_throughput.txt >> throughput_q4.txt
+cat >> throughput_q4.txt <<-EOF
+end
+start
+EOF
+cat rate10^-6/tcp_throughput.txt >> throughput_q4.txt
+cat >> throughput_q4.txt <<-EOF
+end
+start
+EOF
+cat rate10^-7/tcp_throughput.txt >> throughput_q4.txt
+cat >> throughput_q4.txt <<-EOF
+end
+start
+EOF
+cat rate10^-8/tcp_throughput.txt >> throughput_q4.txt
+
+cat >> throughput_q4.txt <<-EOF
+end
+EOF
+
+python avg_throughput_q4.py
+
+gnuplot <<-EOF
+load "avg_throughput_q4.p"
+EOF
